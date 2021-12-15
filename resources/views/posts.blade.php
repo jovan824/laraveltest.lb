@@ -1,39 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends ('layout')
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Blog</title>
-    <link rel="stylesheet" href="/app.css">
-</head>
+@section('content')
 
-<body>
+@foreach ($posts as $post)
+
+<article>
 
 
-    <?php foreach ($posts as $post) : ?>
+    <h1>
+        <a href="/posts/{{ $post->slug }}">
+            {{$post->title;}}
+        </a>
 
-    <article>
+    </h1>
 
-
-        <h1>
-            <a href="/posts/<?= $post->slug; ?>">
-                <?= $post->title; ?>
-            </a>
-
-        </h1>
-
-        <div>
-            <?= $post->excerpt?>
-        </div>
+    <div>
+        {{$post->excerpt}}
+    </div>
 
 
-    </article>
+</article>
 
-    <?php endforeach; ?>
+@endforeach
 
-
-</body>
-
-</html>
+@endsection
+   
